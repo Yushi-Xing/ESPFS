@@ -6,14 +6,15 @@ It is designed to upload SPIFFS to the esp series microcontroller, and this meth
 ## 1、使用方法
 data文件夹下存放相关代码和静态资源（与Arduino IDE 1.x 保持一致）
 
-示例为espFS.py 以及espFS.bat 推荐使用espFS.py 
+示例为[espFS.py](espFS.py) 以及[espFS.bat](espFS.py) 推荐使用espFS.py 
 
 需要设置参数！
 
 ![Alt text](imgs/tools-flashsize.png)
 
-根据烧录的代码分区，在board.txt寻找具体分区信息
-example：
+根据烧录的代码分区，在[board.txt](board.txt)寻找具体分区信息
+
+# example：
 ```
 generic.menu.eesz.4M3M.build.spiffs_pagesize=256
 generic.menu.eesz.4M3M.build.spiffs_start=0x100000
@@ -31,20 +32,21 @@ baud=460800
 FS_Start_Address=0x100000           #spiffs_start=0x100000
 chip='esp8266'
 ```
-修改关键参数到 espFS.py 后，修改串口号运行
+修改关键参数到 espFS.py 后，修改串口号后运行
 
 
 可以使用批处理或者python方式执行，两者效果一样
+
 核心命令：
 ```
 py：
-     run_cmd_Popen_fileno(f"mkspiffs.exe -c ./data -p 256 -b 8192 -s 0x2FA000 {binname}")
-     run_cmd_Popen_fileno(f'esptool.exe --chip esp8266 --baud 115200 write_flash -z 0x100000 {binname}') 
+    run_cmd_Popen_fileno(f"mkspiffs.exe -c ./data -p 256 -b 8192 -s 0x2FA000 {binname}")
+    run_cmd_Popen_fileno(f'esptool.exe --chip esp8266 --baud 115200 write_flash -z 0x100000 {binname}') 
 bat：
     %~dp0mkspiffs -c %~dp0data -b 8192 -p 256 -s 0x2FA000 %~dp0%file_name%
     %~dp0esptool.exe --chip esp8266 --baud 115200 write_flash -z 0x100000 %~dp0%file_name%
 ```
-可在文件中修改相关参数
+
 
 ## 2、旨在向esp系列单片机上传SPIFS，由于Arduino IDE 2.0 以上暂不支持官方插件暂时使用此方法。
 
