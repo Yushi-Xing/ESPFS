@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # ESPFS
 It is designed to upload SPIFFS to the esp series microcontroller, and this method is temporarily used because the official plug-in is not supported by Arduino IDE 2.0 and above
 =======
@@ -11,7 +10,7 @@ data文件夹下存放相关代码和静态资源（与Arduino IDE 1.x 保持一
 
 需要设置参数！
 
-![Alt text](imgs\tools-flashsize.png)
+![Alt text](imgs/tools-flashsize.png)
 
 根据烧录的代码分区，在board.txt寻找具体分区信息
 example：
